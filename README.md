@@ -59,10 +59,10 @@ Ensure you have **Node.js** (v18 or newer) installed on your computer.
 
 ```bash
 # 1. Clone this repository
-git clone https://github.com/your-username/SafeQR.git
+git clone https://github.com/KuDanial/SafeQR-ICT653.git
 
 # 2. Navigate into the project folder
-cd SafeQR
+cd SafeQR-ICT653
 
 # 3. Install dependencies
 npm install
