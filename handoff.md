@@ -20,13 +20,14 @@
 - **Core Scam Prevention Engines**:
   - Optical anti-tamper scanner catching pasted mule stickers (*Syndicate Trading Ent*).
   - Web Speech API (`window.speechSynthesis`) speaking: *"Payment successful. Fifteen Ringgit received by Kedai Makan Ali."*
-  - Dedicated incident reporting with unique case reference numbers (`#NSRC-997-XXXX`) linked to PDRM NSRC and Admin console.
+  - Dedicated incident reporting with unique case reference numbers (`SQR-CASE-XXXX`) sent to the SafeQR Admin console; users are pointed to their bank or NSRC 997 for losses.
+  - Merchant registration with business name and verification documents (SSM Cert, Premise License, DuitNow Certificate), which lands in the admin approval queue.
 - **Merchant & Admin Dashboards**:
   - Live real-time settlement feed and Web Audio API synthesized cash register chimes.
   - Anti-Fake Screenshot Receipt Verification Checker.
   - Admin approval queues with instant status updates.
 - **Design Specifications & Exports**:
-  - Native FigCraft design file at `Untitled.figcraft` (165 nodes across 7 mobile screens).
+  - Native FigCraft design file at `Untitled.figcraft`: 30 editable frames generated from the live app (named after report Figures 2.11 to 2.27), 106 click hotspots, timed auto-advance on Scanning, Processing and Payment Alert, and 4 flows (Login, Customer, Merchant, Admin).
   - Composite visual render at `preview_figcraft.png`.
 - **Pre-Commit Audit**:
   - Passed `npm run build` with zero errors.

@@ -154,7 +154,7 @@ SafeQR/
 ├── .agents/
 │   └── mcp_config.json          # FigCraft MCP automation config
 ├── Untitled.figcraft            # Native FigCraft UI canvas
-├── preview_figcraft.png         # Composite visual render of all 7 mobile frames
+├── preview_figcraft.png         # Composite render of all 30 prototype frames
 ├── handoff.md                   # Development milestone log
 ├── package.json                 # Project dependencies & scripts
 ├── tailwind.config.js           # Tailwind theme configuration
