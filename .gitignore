@@ -32,3 +32,9 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Promo video project, voice recording and renders (kept local only)
+video/
+
+# Private course documents and report drafts (kept local only)
+DOCUMENT/

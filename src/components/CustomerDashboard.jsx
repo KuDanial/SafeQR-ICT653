@@ -57,7 +57,7 @@ export default function CustomerDashboard({
   const [notifications, setNotifications] = useState([
     {
       id: 'n1',
-      title: '🚨 PDRM NSRC Scam Alert',
+      title: '🚨 Community Scam Alert',
       message: 'New syndicate sticker overlay reported in Bangsar food court. SafeQR optical tamper engine is actively intercepting fake QR codes.',
       time: '10 mins ago',
       unread: true
@@ -149,16 +149,16 @@ export default function CustomerDashboard({
 
     setIsReporting(false);
     setReportDesc('');
-    showToast('✅ Scam report logged! Dispatched to SafeQR Security & PDRM NSRC.');
+    showToast('✅ Scam report sent to SafeQR Admin for review.');
   };
 
   // Immediate 1-Click Action for Tampered QR Sticker Scam
   const handleImmediateTamperReport = () => {
-    const caseRef = `NSRC-997-${Math.floor(1000 + Math.random() * 9000)}`;
+    const caseRef = `SQR-CASE-${Math.floor(1000 + Math.random() * 9000)}`;
     const reportData = {
       type: 'Fake QR Code (Sticker Overwrite)',
       merchantName: 'Kedai Makan Ali (Bangsar Stall #4 Sticker)',
-      description: 'Physical counterfeit QR sticker pasted over merchant stand. Mule account detected: SYNDICATE TRADING ENT. Flagged and blacklisted across nationwide SafeQR network.',
+      description: 'Physical counterfeit QR sticker pasted over merchant stand. Suspected mule account: SYNDICATE TRADING ENT. Flagged for admin review.',
       reporter: elderlyMode ? 'Pak Mat (Senior Citizen)' : 'Ahmad Faiz (Customer)',
       severity: 'Critical High',
       caseRef: caseRef
@@ -169,8 +169,8 @@ export default function CustomerDashboard({
     setScanStep('tamper_reported_success');
 
     // Trigger audible confirmation
-    speakConfirmation("Scam report dispatched to National Scam Response Centre and SafeQR Admin. Sticker blacklisted.");
-    showToast(`🚨 Case #${caseRef} lodged with PDRM NSRC (997) & Admin!`);
+    speakConfirmation("Scam report sent to SafeQR Admin. This sticker has been flagged.");
+    showToast(`🚨 Case ${caseRef} sent to SafeQR Admin for review.`);
   };
 
   // Notification helpers
@@ -502,7 +502,7 @@ export default function CustomerDashboard({
             className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-red-600/30 flex items-center justify-center gap-2 text-sm active:scale-95 transition-all"
           >
             <FileWarning className="w-4 h-4" />
-            <span>Report This Fake QR Sticker to PDRM / Admin</span>
+            <span>Report This Fake QR Sticker to SafeQR</span>
           </button>
 
           <button
@@ -517,7 +517,7 @@ export default function CustomerDashboard({
   }
 
   /* =====================================================================
-     RENDER: TAMPER SCAM REPORTED TO PDRM & ADMIN (Instant Action Result)
+     RENDER: TAMPER SCAM REPORTED TO SAFEQR ADMIN (Instant Action Result)
      ===================================================================== */
   if (scanStep === 'tamper_reported_success') {
     return (
@@ -532,21 +532,21 @@ export default function CustomerDashboard({
           </div>
 
           <span className="bg-red-50 border border-red-300 text-red-800 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider mb-2 flex items-center gap-1.5 shadow-2xs">
-            🚨 Incident Lodged with PDRM NSRC (997)
+            🚨 Report Sent to SafeQR Admin
           </span>
 
           <h2 className="text-2xl font-black text-slate-900 mb-1">
-            Scam QR Sticker Blacklisted!
+            Scam QR Sticker Flagged!
           </h2>
           <p className="text-xs text-slate-600 max-w-xs font-medium">
-            Your report was dispatched directly to the <strong>National Scam Response Centre (997)</strong> and the <strong>SafeQR Admin Console</strong>.
+            Your report was sent to the <strong>SafeQR Admin Console</strong>. Other SafeQR users will be warned before scanning this sticker.
           </p>
 
           {/* Case Reference Card */}
           <div className="mt-5 w-full bg-slate-50 border border-slate-200 rounded-3xl p-4 text-left space-y-2 text-xs shadow-xs">
             <div className="flex justify-between items-center pb-2 border-b border-slate-200">
               <span className="text-slate-500 font-bold">Case Reference:</span>
-              <span className="font-mono text-red-700 font-black text-sm">{reportedCaseInfo?.caseRef || 'NSRC-997-8841'}</span>
+              <span className="font-mono text-red-700 font-black text-sm">{reportedCaseInfo?.caseRef || 'SQR-CASE-8841'}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-slate-500">Merchant Premise:</span>
@@ -559,13 +559,13 @@ export default function CustomerDashboard({
             <div className="flex justify-between items-center">
               <span className="text-slate-500">Action Status:</span>
               <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                Mule Account Freezed & Stand Flagged ✅
+                Stand Flagged • Under Admin Review
               </span>
             </div>
           </div>
 
           <div className="mt-3 text-[11px] text-slate-600 bg-amber-50 border border-amber-200 text-amber-900 p-2.5 rounded-2xl text-left font-medium">
-            💡 <strong>Examiner Note:</strong> Switch to <strong>🛡️ Admin Mode</strong> on the top header ribbon to view this newly lodged report in the live queue!
+            💡 <strong>Lost money?</strong> Contact your bank immediately or call the <strong>National Scam Response Centre at 997</strong>.
           </div>
         </div>
 
@@ -695,7 +695,7 @@ export default function CustomerDashboard({
               {/* Security Status Pill */}
               <div className="pt-2.5 border-t border-white/15 flex items-center justify-between text-xs text-blue-100 font-medium">
                 <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-teal-300" /> 100% Anti-Tamper Protected
+                  <ShieldCheck className="w-3.5 h-3.5 text-teal-300" /> Anti-Tamper Check On
                 </span>
                 <span className="text-[10px] text-blue-200/80 font-mono">Maybank •• 4912</span>
               </div>

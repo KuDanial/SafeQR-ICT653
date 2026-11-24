@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
-import { ShieldCheck, UserCheck, Store, Lock, ArrowRight, Sparkles } from 'lucide-react';
+import { ShieldCheck, UserCheck, Store, Lock, ArrowRight, Sparkles, Upload, CheckCircle2 } from 'lucide-react';
 
-export default function AuthScreen({ onSelectRole, onLoginSuccess }) {
+const MERCHANT_DOCS = ['SSM Cert.pdf', 'Premise License.jpg', 'DuitNow Certificate.pdf'];
+
+export default function AuthScreen({ onSelectRole, onLoginSuccess, onRegisterMerchant }) {
   const [isRegister, setIsRegister] = useState(false);
   const [selectedRole, setSelectedRole] = useState('customer'); // customer | merchant | admin
   const [identifier, setIdentifier] = useState('ahmad.faiz@uitm.edu.my');
   const [password, setPassword] = useState('••••••••');
+  const [businessName, setBusinessName] = useState('');
+  const [attachedDocs, setAttachedDocs] = useState([]);
+
+  const isMerchantRegister = isRegister && selectedRole === 'merchant';
+
+  const toggleDoc = (doc) => {
+    setAttachedDocs(prev => (prev.includes(doc) ? prev.filter(d => d !== doc) : [...prev, doc]));
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (isMerchantRegister) {
+      if (!businessName.trim() || attachedDocs.length === 0) return;
+      onRegisterMerchant?.({ businessName: businessName.trim(), identifier, documentsAttached: attachedDocs });
+      setBusinessName('');
+      setAttachedDocs([]);
+    }
     onLoginSuccess({
       email: identifier,
       role: selectedRole,
@@ -135,9 +151,60 @@ export default function AuthScreen({ onSelectRole, onLoginSuccess }) {
           />
         </div>
 
+        {isMerchantRegister && (
+          <>
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Registered Business Name
+              </label>
+              <input
+                type="text"
+                value={businessName}
+                onChange={(e) => setBusinessName(e.target.value)}
+                required
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all font-medium"
+                placeholder="e.g. Kedai Makan Ali"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Verification Documents <span className="text-slate-400 font-medium">(tap to attach)</span>
+              </label>
+              <div className="space-y-1.5">
+                {MERCHANT_DOCS.map((doc) => {
+                  const attached = attachedDocs.includes(doc);
+                  return (
+                    <button
+                      key={doc}
+                      type="button"
+                      onClick={() => toggleDoc(doc)}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border text-xs font-semibold transition-all ${
+                        attached
+                          ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
+                          : 'bg-slate-50 border-dashed border-slate-300 text-slate-600 hover:bg-white'
+                      }`}
+                    >
+                      <span className="flex items-center gap-1.5">
+                        {attached ? <CheckCircle2 className="w-3.5 h-3.5" /> : <Upload className="w-3.5 h-3.5" />}
+                        {doc}
+                      </span>
+                      <span>{attached ? 'Attached' : 'Upload'}</span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="text-[10px] text-slate-500 mt-1.5 font-medium">
+                Your shop is listed as Pending until a SafeQR admin approves these documents.
+              </p>
+            </div>
+          </>
+        )}
+
         <button
           type="submit"
-          className="w-full mt-2 bg-[#16205b] hover:bg-[#1f2d7d] text-white font-bold py-2.5 px-4 rounded-xl shadow-md shadow-blue-900/20 flex items-center justify-center gap-2 text-sm transition-all active:scale-[0.98]"
+          disabled={isMerchantRegister && (!businessName.trim() || attachedDocs.length === 0)}
+          className="w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed bg-[#16205b] hover:bg-[#1f2d7d] text-white font-bold py-2.5 px-4 rounded-xl shadow-md shadow-blue-900/20 flex items-center justify-center gap-2 text-sm transition-all active:scale-[0.98]"
         >
           <span>{isRegister ? 'Register & Enter Dashboard' : 'Enter Prototype Dashboard'}</span>
           <ArrowRight className="w-4 h-4" />

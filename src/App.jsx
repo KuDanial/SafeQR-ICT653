@@ -61,6 +61,26 @@ export default function App() {
     );
   };
 
+  // New merchant registration lands in the admin approval queue
+  const handleRegisterMerchant = ({ businessName, identifier, documentsAttached }) => {
+    const digits = Date.now().toString().slice(-8);
+    setPendingVerifications(prev => [
+      {
+        id: `pv-${digits}`,
+        businessName,
+        ownerName: identifier,
+        category: 'New Registration',
+        ssmNumber: `SSM-2026${digits}`,
+        submittedAt: 'Just now',
+        location: 'Malaysia',
+        status: 'Pending',
+        documentsAttached
+      },
+      ...prev
+    ]);
+    showToast(`📄 "${businessName}" submitted for SafeQR verification.`);
+  };
+
   // Customer adds new report
   const handleAddScamReport = (newReport) => {
     const reportObj = {
@@ -102,6 +122,7 @@ export default function App() {
       {role === 'login' && (
         <AuthScreen
           onSelectRole={(selectedRole) => setRole(selectedRole)}
+          onRegisterMerchant={handleRegisterMerchant}
           onLoginSuccess={(user) => {
             setActiveUser(user);
             showToast(`Welcome, ${user.name}! Mode: ${user.role.toUpperCase()}`);

@@ -161,7 +161,7 @@ export default function MerchantDashboard({
         </div>
 
         {/* =============================================================
-            SIMULATE INCOMING PAYMENT (Feature #6 - Anti-Fake Receipt)
+            SIMULATE INCOMING PAYMENT (Anti-Fake Receipt demo)
             ============================================================= */}
         <div className="bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/40 border border-blue-200/80 p-4 rounded-3xl shadow-sm space-y-2.5">
           <div className="flex items-center justify-between">
@@ -170,7 +170,7 @@ export default function MerchantDashboard({
               Demo: Anti-Fake Receipt Test
             </span>
             <span className="text-[10px] text-blue-800 bg-blue-100/70 px-2.5 py-0.5 rounded-full font-bold border border-blue-200">
-              Feature #6
+              Demo
             </span>
           </div>
 
@@ -295,7 +295,7 @@ export default function MerchantDashboard({
                 type="submit"
                 className="w-full bg-[#16205b] hover:bg-[#1f2d7d] text-white font-bold py-2.5 rounded-2xl text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition-all"
               >
-                <span>Verify Against Bank Gateway</span>
+                <span>Check Against Payment Records</span>
               </button>
             </form>
 
