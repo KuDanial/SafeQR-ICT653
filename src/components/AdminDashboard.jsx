@@ -259,7 +259,7 @@ export default function AdminDashboard({
                       <button
                         onClick={() => {
                           onResolveScamReport(report.id);
-                          showToast(`🛡️ Resolved Scam Report for "${report.merchantName}"! QR Blacklisted & PDRM notified.`);
+                          showToast(`🛡️ Resolved Scam Report for "${report.merchantName}"! Mule account blacklisted in SafeQR.`);
                         }}
                         className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-3.5 rounded-xl flex items-center gap-1.5 text-xs shadow-xs active:scale-95 transition-all"
                       >
@@ -277,7 +277,7 @@ export default function AdminDashboard({
 
       {/* Admin Safety Footer */}
       <div className="pt-2 text-center text-[10px] text-slate-500 border-t border-slate-200/80 font-semibold">
-        SafeQR Admin • Connected to National Scam Response Centre (NSRC 997)
+        SafeQR Admin • Losses are handled by banks and NSRC (997)
       </div>
     </div>
   );
