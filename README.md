@@ -1,4 +1,4 @@
-# SafeQR — Secure QR Verification & Payment Shield 🛡️
+<h1 align="center"> SafeQR — Secure QR Verification & Payment Shield 🛡️ </h1>
 
 <p align="center">
   <img src="public/img/logo-outline.png" alt="SafeQR logo" width="400">
