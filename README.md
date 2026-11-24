@@ -1,11 +1,25 @@
 # SafeQR — Secure QR Verification & Payment Shield 🛡️
 
-[![React](https://img.shields.io/badge/React-18.3.1-blue.svg)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6.0-purple.svg)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/Academic-Prototype-emerald.svg)]()
+<p align="center">
+  <img src="public/img/logo-outline.png" alt="SafeQR logo" width="400">
+</p>
 
+<p align="center">
 > **SafeQR** is a third-party QR verification and payment confirmation prototype built for a university case study on **Malaysia's cashless society**. It is designed to mitigate fraud without requiring direct banking API modifications.
+</p>
+
+<p align="center">
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-18.3.1-blue.svg" alt="React" />
+  </a>
+  <a href="https://vitejs.dev/">
+    <img src="https://img.shields.io/badge/Vite-6.0-purple.svg" alt="Vite" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/TailwindCSS-3.4-38bdf8.svg" alt="Tailwind CSS" />
+  </a>
+  <img src="https://img.shields.io/badge/Academic-Prototype-emerald.svg" alt="License" />
+</p>
 
 ---
 
